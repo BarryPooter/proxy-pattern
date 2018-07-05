@@ -71,7 +71,7 @@ class ProductResource implements Product
 
 class ProductProxy implements Product
 {
-    protected $product;
+    protected $product; // is a Product.
 
     public function setPrice (float $price) : void
     {
