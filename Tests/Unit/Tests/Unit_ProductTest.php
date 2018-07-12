@@ -29,5 +29,8 @@ class Unit_ProductTest extends TestCase
     public function testPrice () : void
     {
         $this->assertEquals((float) null, $this->sut->getPrice());
+
+        $this->sut->setPrice((float) 49.50);
+        $this->assertEquals((float) 49.50, $this->sut->getPrice());
     }
 }
