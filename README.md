@@ -36,7 +36,7 @@ De protection proxy beheert toegang tot bepaalde objecten, je kunt setters bijvo
 of bepaalde informatie afschermen als de Client niet de juiste authoriteit bezit.
 
 ##### Omschrijf de werking en het belang van copy-on-write -proxies
-De werking van copy-on-write is om zware handelingen uit te stellen totdat deze daadwerkelijk nodig zijn.
+De werking van copy-on-write is om zware schrijfacties uit te stellen totdat deze daadwerkelijk nodig zijn.
 Zo voer je pas berekeningen of het laden van een Resource uit wanneer de Client deze nodig heeft.
 
 Dit voorkomt onnodig zware resources en houdt je server resource gebruik zo laag mogelijk = snelheid.
