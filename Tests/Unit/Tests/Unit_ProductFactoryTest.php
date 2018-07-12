@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use App\Contracts\FactoryInterface;
 use App\Factories\ProductFactory;
 use PHPUnit\Framework\TestCase;
 
@@ -18,5 +19,10 @@ class Unit_ProductFactoryTest extends TestCase
     public function testInstantiation () : void
     {
         $this->assertNotNull($this->sut);
+    }
+
+    public function testInstanceOf () : void
+    {
+        $this->assertInstanceOf(FactoryInterface::class, $this->sut);
     }
 }
