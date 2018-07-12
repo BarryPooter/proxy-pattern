@@ -24,4 +24,13 @@ class Feature_ProductProxyTest extends TestCase
         $this->expectException(AccessDeniedException::class);
         $proxy->setPrice((float) 30);
     }
+
+    public function testAllowAdminToSetProductPice () : void
+    {
+        // Instantiate a Proxy where the
+        // User is an admin.
+        $proxy = new ProductProxy(true);
+        $proxy->setPrice((float) 30);
+        $this->assertEquals(30.00, $proxy->getPrice());
+    }
 }
