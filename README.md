@@ -47,39 +47,32 @@ voordat je een bepaalde (gevoelige) actie uit laat voeren.
 
 ```php
 <?php
-
-interface Product {
-    public function setPrice (float $price) : void;
+interface SoapInterface {
+    public function connect() : SoapClient;
 }
 
-class CurrentUser {
-    public static function isAdmin()
+class SoapClientProxy {
+    public function connect() : SoapClient
     {
-        return false;
+        return new SoapClient(...);       
     }
 }
 
-class ProductResource implements Product
-{
-    protected $price;
-
-    public function setPrice (float $price) : void
+class SoapConnection implements SoapInterface {    
+    private $realObject;
+    
+    public function connect() : SoapClient
     {
-        $this->price = $price;
+        return $this->realObject->connect();
     }
-}
-
-class ProductProxy implements Product
-{
-    protected $product; // is a Product.
-
-    public function setPrice (float $price) : void
+    
+    private final function _getClient() : SoapClient
     {
-        if (!CurrentUser::isAdmin()) {
-            throw new \Exception("You have insufficient rights to edit a Product its price.");
+        if (empty($this->realObject)) {
+            $this->realObject = $this->connect();
         }
-
-        $this->product->setPrice($price);
+        
+        return $this->realObject;
     }
 }
 ```
