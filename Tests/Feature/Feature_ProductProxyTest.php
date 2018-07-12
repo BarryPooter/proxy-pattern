@@ -25,7 +25,7 @@ class Feature_ProductProxyTest extends TestCase
         $proxy->setPrice((float) 30);
     }
 
-    public function testAllowAdminToSetProductPice () : void
+    public function testAllowAdminToSetProductPrice () : void
     {
         // Instantiate a Proxy where the
         // User is an admin.
