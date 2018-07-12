@@ -25,4 +25,9 @@ class Unit_ProductTest extends TestCase
     {
         $this->assertInstanceOf(ProductResource::class, $this->sut);
     }
+
+    public function testPrice () : void
+    {
+        $this->assertEquals((float) null, $this->sut->getPrice());
+    }
 }
