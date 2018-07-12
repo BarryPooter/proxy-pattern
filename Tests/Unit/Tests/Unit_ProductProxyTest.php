@@ -25,4 +25,9 @@ class Unit_ProductProxyTestTest extends TestCase
     {
         $this->assertInstanceOf(ProductResource::class, $this->sut);
     }
+
+    public function testPrice () : void
+    {
+        $this->assertEquals((float) null, $this->sut->getPrice());
+    }
 }

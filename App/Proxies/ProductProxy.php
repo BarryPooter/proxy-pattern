@@ -2,18 +2,36 @@
 
 namespace App\Proxies;
 
+use App\Classes\Product;
 use App\Contracts\ProductResource;
 
 class ProductProxy implements ProductResource
 {
+    private $realObject;
 
+    /**
+     * @return float
+     */
     public function getPrice(): float
     {
-        // TODO: Implement getPrice() method.
+        return (float) null;
     }
 
+    /**
+     * @param float $price
+     */
     public function setPrice(float $price): void
+    {}
+
+    /**
+     * @return ProductResource
+     */
+    private final function _getObject () : ProductResource
     {
-        // TODO: Implement setPrice() method.
+        if (empty($realObject)) {
+            $this->realObject = new Product();
+        }
+
+        return $this->realObject;
     }
 }
