@@ -4,6 +4,7 @@ namespace App\Proxies;
 
 use App\Classes\Product;
 use App\Contracts\ProductResource;
+use Symfony\Component\Finder\Exception\AccessDeniedException;
 
 class ProductProxy implements ProductResource
 {
@@ -28,6 +29,10 @@ class ProductProxy implements ProductResource
      */
     public function setPrice(float $price): void
     {
+        if (!$this->isUserAdmin) {
+            throw new AccessDeniedException("You do not have the permissions to edit this product its price.");
+        }
+
         $this->_getRealObject()->setPrice($price);
     }
 
