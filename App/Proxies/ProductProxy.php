@@ -14,21 +14,23 @@ class ProductProxy implements ProductResource
      */
     public function getPrice(): float
     {
-        return (float) null;
+        return (float) $this->_getRealObject()->getPrice();
     }
 
     /**
      * @param float $price
      */
     public function setPrice(float $price): void
-    {}
+    {
+        $this->_getRealObject()->setPrice($price);
+    }
 
     /**
      * @return ProductResource
      */
-    private final function _getObject () : ProductResource
+    private final function _getRealObject () : ProductResource
     {
-        if (empty($realObject)) {
+        if (empty($this->realObject)) {
             $this->realObject = new Product();
         }
 
