@@ -13,7 +13,7 @@ class Unit_ProductProxyTestTest extends TestCase
     protected function setUp() /* The :void return type declaration that should be here would cause a BC issue */
     {
         parent::setUp();
-        $this->sut = new ProductProxy();
+        $this->sut = new ProductProxy(true);
     }
 
     public function testInstantiation () : void
