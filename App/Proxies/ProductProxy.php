@@ -8,6 +8,12 @@ use App\Contracts\ProductResource;
 class ProductProxy implements ProductResource
 {
     private $realObject;
+    private $isUserAdmin;
+
+    public function __construct(bool $isUserAdmin = false)
+    {
+        $this->isUserAdmin = $isUserAdmin;
+    }
 
     /**
      * @return float
